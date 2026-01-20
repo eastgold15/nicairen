@@ -51,13 +51,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/contact/': RouteRecordInfo<
-      '/contact/',
-      '/contact',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/gallery/': RouteRecordInfo<
       '/gallery/',
       '/gallery',
@@ -162,12 +155,6 @@ declare module 'vue-router/auto-routes' {
     'src/pages/ai/text2image/index.vue': {
       routes:
         | '/ai/text2image/'
-      views:
-        | never
-    }
-    'src/pages/contact/index.vue': {
-      routes:
-        | '/contact/'
       views:
         | never
     }
