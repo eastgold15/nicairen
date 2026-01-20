@@ -156,9 +156,21 @@ const searchKeyword = ref('');
 // 分页相关
 const currentPage = ref(1);
 const pageSize = ref(9);
+interface Work {
+  id: number,
+  title: string,
+  description: string,
+  image: string,
+  category: keyof CategoryMap,
+  style: string,
+  artist: string,
+  year: string,
+  isLiked: boolean,
+  likes: number
+}
 
 // 模拟作品数据
-const allWorks = ref([
+const allWorks = ref<Work[]>([
   {
     id: 1,
     title: '大阿福',
@@ -416,20 +428,23 @@ const paginatedWorks = computed(() => {
   return filteredWorks.value.slice(startIndex, endIndex);
 });
 
-// 获取分类文本
-const getCategoryText = (category) => {
   const categoryMap = {
     'figure': '人物类',
     'animal': '动物类',
     'legend': '神话传说',
     'folk': '民俗风情',
     'modern': '现代创意'
-  };
-  return categoryMap[category] || '';
+  } as const
+
+  type CategoryMap = typeof categoryMap
+
+// 获取分类文本
+const getCategoryText = (category:keyof CategoryMap) => {
+  return categoryMap[category as keyof CategoryMap] || '';
 };
 
 // 切换点赞状态
-const toggleLike = (id) => {
+const toggleLike = (id: number) => {
   const work = allWorks.value.find(w => w.id === id);
   if (work) {
     work.isLiked = !work.isLiked;
@@ -443,7 +458,7 @@ const filterWorks = () => {
 };
 
 // 处理搜索
-const handleSearch = (event) => {
+const handleSearch = (event: Event) => {
   // 可以在这里添加防抖逻辑
   currentPage.value = 1; // 重置到第一页
 };

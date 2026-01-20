@@ -143,7 +143,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, reactive, onUnmounted } from 'vue';
 
 const loaded = ref(false);

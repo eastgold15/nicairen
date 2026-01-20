@@ -202,7 +202,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
 import { getInheritorsByPage } from '../api/inheritor';
 

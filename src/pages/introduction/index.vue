@@ -21,7 +21,7 @@
     </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 const titleChars = '泥韵千秋'.split('');
@@ -221,7 +221,7 @@ const handleMouseMove = (e) => {
     </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 // 无逻辑，仅展示
 </script>
 
