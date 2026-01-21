@@ -31,7 +31,7 @@ const scrollToStart = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
 
-const handleMouseMove = (e) => {
+const handleMouseMove = (e: MouseEvent) => {
     // 可按需实现视差
 };
 </script>

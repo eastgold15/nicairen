@@ -155,7 +155,7 @@ const statistics = reactive([
 ]);
 
 // 视差效果状态
-const parallaxStyle = ref({ transform: 'translate(0, 0)' });
+const parallaxStyle = ref<{ transform: string; transition?: string }>({ transform: 'translate(0, 0)' });
 
 onMounted(() => {
   // 1. 首屏动画
@@ -189,19 +189,19 @@ const startCounting = () => {
     const end = stat.value;
     const startTime = performance.now();
 
-    const animate = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+const animate = (currentTime: number) => {
+  const elapsed = currentTime - startTime;
+  const progress = Math.min(elapsed / duration, 1);
 
-      // easeOutQuart 缓动函数
-      const ease = 1 - Math.pow(1 - progress, 4);
+  // easeOutQuart 缓动函数
+  const ease = 1 - Math.pow(1 - progress, 4);
 
-      stat.current = start + (end - start) * ease;
+  stat.current = start + (end - start) * ease;
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
+  if (progress < 1) {
+    requestAnimationFrame(animate);
+  }
+};
 
     requestAnimationFrame(animate);
   });
@@ -215,7 +215,7 @@ const scrollToContent = () => {
 };
 
 // 简单的鼠标视差逻辑
-const handleImageParallax = (e) => {
+const handleImageParallax = (e: MouseEvent) => {
   const { clientX, clientY } = e;
   // 计算相对于窗口中心的偏移
   const x = (clientX - window.innerWidth / 2) / 30; // 移动幅度因子

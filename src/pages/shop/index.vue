@@ -545,13 +545,13 @@ const cartItems = ref([]);
 const showBackToTop = ref(false);
 
 // 根据分类ID获取分类名称
-const getCategoryName = (categoryId) => {
+const getCategoryName = (categoryId: number) => {
   const category = categories.value.find(c => c.id === categoryId);
   return category ? category.name : '';
 };
 
 // 根据传承人ID获取传承人名称
-const getInheritorName = (inheritorId) => {
+const getInheritorName = (inheritorId: number) => {
   const inheritor = inheritors.value.find(i => i.id === inheritorId);
   return inheritor ? inheritor.name : '';
 };
@@ -676,19 +676,19 @@ const handleSearch = () => {
 };
 
 // 选择分类
-const selectCategory = (categoryId) => {
+const selectCategory = (categoryId: string) => {
   selectedCategory.value = categoryId;
   currentPage.value = 1;
 };
 
 // 选择传承人
-const selectInheritor = (inheritorId) => {
+const selectInheritor = (inheritorId: string) => {
   selectedInheritor.value = inheritorId;
   currentPage.value = 1;
 };
 
 // 选择标签
-const selectTag = (tag) => {
+const selectTag = (tag: any) => {
   if (selectedTags.value.includes(tag)) {
     selectedTags.value = selectedTags.value.filter(t => t !== tag);
   } else {
@@ -717,7 +717,7 @@ const handleSort = () => {
 };
 
 // 设置视图
-const setGridView = (view) => {
+const setGridView = (view: string) => {
   gridView.value = view;
 };
 
@@ -736,7 +736,7 @@ const nextPage = () => {
 };
 
 // 跳转到指定页
-const goToPage = (page) => {
+const goToPage = (page: number) => {
   currentPage.value = page;
 };
 
@@ -760,7 +760,7 @@ const toggleCart = () => {
 };
 
 // 添加到购物车
-const addToCart = (product) => {
+const addToCart = (product: { id: any; title: any; }) => {
   const existingItem = cartItems.value.find(item => item.id === product.id);
 
   if (existingItem) {
@@ -780,7 +780,7 @@ const addToCart = (product) => {
 };
 
 // 立即购买
-const buyNow = (product) => {
+const buyNow = (product: any) => {
   // 清空购物车并添加当前商品
   cartItems.value = [{
     ...product,
@@ -792,7 +792,7 @@ const buyNow = (product) => {
 };
 
 // 减少购物车商品数量
-const decreaseQuantity = (productId) => {
+const decreaseQuantity = (productId: any) => {
   const item = cartItems.value.find(item => item.id === productId);
   if (item && item.quantity > 1) {
     item.quantity--;
@@ -800,7 +800,7 @@ const decreaseQuantity = (productId) => {
 };
 
 // 增加购物车商品数量
-const increaseQuantity = (productId) => {
+const increaseQuantity = (productId: any) => {
   const item = cartItems.value.find(item => item.id === productId);
   if (item) {
     item.quantity++;
@@ -808,7 +808,7 @@ const increaseQuantity = (productId) => {
 };
 
 // 从购物车移除商品
-const removeFromCart = (productId) => {
+const removeFromCart = (productId: any) => {
   cartItems.value = cartItems.value.filter(item => item.id !== productId);
 };
 

@@ -441,6 +441,7 @@ import badgeIcon from '@/image/徽章.png'
 import regionIcon from '@/image/我的页_地区.png'
 import dateIcon from '@/image/日期.png'
 import { toast } from 'vue-sonner'
+import { getInheritorDetailById } from '@/api/inheritor'
 
 const route = useRoute()
 const router = useRouter()
@@ -469,7 +470,7 @@ interface InheritorDetail {
   philosophy: string
   careerHistory: string
   inheritanceLineage: string
-  masterInfo:string
+masterInfo:string
 
 }
 const detail = ref<InheritorDetail>()

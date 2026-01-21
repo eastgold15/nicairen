@@ -21,10 +21,18 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue';
 import CraftCard from './CraftCard.vue';
 
+interface CraftItem {
+  icon: string;
+  title: string;
+  desc: string;
+  delay: number;
+}
+
 const props = defineProps({
-  items: { type: Array, default: () => [] },
+  items: { type: Array as PropType<CraftItem[]>, default: () => [] },
   // 使用静态路径作为默认值
   spotlightSrc: { type: String, default: '/src/assets/images/shoubu.png' }
 });

@@ -204,7 +204,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
-import { getInheritorsByPage } from '../api/inheritor';
+
 
 // 导入图片资源
 import levelIcon from '@/image/等级.png'
